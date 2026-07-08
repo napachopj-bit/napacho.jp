@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="施術は対面で、救霊はオンラインでも可能です">
+    <meta property="og:site_name" content="頭蓋仙骨療法 ナパチョ">
+    <meta property="og:title" content="施術予約">
+    <meta property="og:type" content="website">
+    <title>施術予約 | 頭蓋仙骨療法 ナパチョ</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; line-height: 1.6; }
+        header { background: #f8f8f8; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo img { max-height: 60px; width: auto; }
+        nav { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: #333; font-size: 0.9em; font-weight: 500; }
+        nav a:hover, nav a.active { color: #5a9a6e; }
+        nav a.active { border-bottom: 2px solid #5a9a6e; }
+        .btn-line { background: #5a9a6e; color: #fff !important; padding: 9px 18px; border-radius: 5px; white-space: nowrap; font-size: 0.85em; }
+        .btn-line:hover { background: #4a8a5e !important; }
+        .page-hero { background: linear-gradient(135deg, #f0f7f3 0%, #e8f4ee 100%); text-align: center; padding: 60px 20px 40px; border-bottom: 1px solid #d8eee0; }
+        .page-hero p.label { color: #5a9a6e; font-size: 0.9em; letter-spacing: 0.1em; margin-bottom: 8px; }
+        .page-hero h1 { font-size: 2em; color: #222; font-weight: 700; }
+        .page-hero .subtitle { margin-top: 16px; color: #666; font-size: 0.95em; }
+        main { max-width: 1100px; margin: 0 auto; padding: 60px 20px 80px; }
+        .service-section { margin-bottom: 70px; }
+        .section-label { text-align: center; color: #5a9a6e; font-size: 0.85em; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+        .section-title { text-align: center; font-size: 1.9em; color: #222; margin-bottom: 16px; }
+        .section-desc { text-align: center; color: #555; max-width: 680px; margin: 0 auto 40px; font-size: 0.97em; line-height: 1.8; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+        .price-card { background: #fff; border: 1px solid #e0ece5; border-radius: 10px; padding: 30px 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .price-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(90,154,110,0.12); }
+        .price-card .card-label { font-size: 0.8em; color: #5a9a6e; letter-spacing: 0.08em; margin-bottom: 8px; }
+        .price-card h3 { font-size: 1.1em; color: #222; margin-bottom: 10px; line-height: 1.4; }
+        .price-card .duration { font-size: 0.82em; color: #888; margin-bottom: 14px; }
+        .price-card .price { font-size: 1.7em; font-weight: 700; color: #3a7a55; }
+        .price-card .price span { font-size: 0.55em; font-weight: 400; color: #666; margin-left: 2px; }
+        .price-card.highlight { background: linear-gradient(135deg, #f0f9f4, #e4f4ea); border-color: #5a9a6e; }
+        .kyurei-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+        .kyurei-card { background: #fff; border: 1px solid #e8e0f0; border-radius: 10px; padding: 32px 24px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: transform 0.2s; }
+        .kyurei-card:hover { transform: translateY(-4px); box-shadow: 0 6px 20px rgba(120,90,160,0.12); }
+        .kyurei-card .type-badge { display: inline-block; background: #7b5ea7; color: #fff; font-size: 0.75em; padding: 3px 12px; border-radius: 20px; margin-bottom: 14px; }
+        .kyurei-card h3 { font-size: 1.05em; color: #333; margin-bottom: 16px; line-height: 1.6; }
+        .kyurei-card .price { font-size: 1.7em; font-weight: 700; color: #7b5ea7; }
+        .kyurei-card .price span { font-size: 0.55em; font-weight: 400; color: #888; margin-left: 2px; }
+        .online-badge { display: inline-flex; align-items: center; gap: 6px; background: #eef4ff; border: 1px solid #b0c8f0; color: #3a6abf; font-size: 0.82em; padding: 5px 14px; border-radius: 20px; margin-bottom: 30px; }
+        .online-badge::before { content: "💻"; }
+        .cta-box { background: linear-gradient(135deg, #3a7a55, #5a9a6e); color: #fff; border-radius: 12px; padding: 48px 32px; text-align: center; margin-top: 60px; }
+        .cta-box h2 { font-size: 1.6em; margin-bottom: 12px; }
+        .cta-box p { font-size: 0.95em; opacity: 0.9; margin-bottom: 28px; line-height: 1.7; }
+        .cta-btn { display: inline-block; background: #fff; color: #3a7a55; font-weight: 700; padding: 14px 36px; border-radius: 8px; text-decoration: none; transition: opacity 0.2s; }
+        .cta-btn:hover { opacity: 0.88; }
+        .divider { border: none; border-top: 1px solid #e8e8e8; margin: 60px 0; }
+        footer { background: #2c3e50; color: #ccc; padding: 48px 20px 24px; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 36px; margin-bottom: 32px; }
+        footer h4 { color: #fff; font-size: 0.85em; letter-spacing: 0.1em; margin-bottom: 14px; }
+        footer ul { list-style: none; }
+        footer ul li { margin-bottom: 8px; }
+        footer a { color: #aaa; text-decoration: none; font-size: 0.9em; }
+        footer a:hover { color: #fff; }
+        .footer-copy { text-align: center; border-top: 1px solid #3d4f60; padding-top: 20px; font-size: 0.82em; color: #888; }
+        @media (max-width: 768px) { .price-grid, .kyurei-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 480px) { .price-grid, .kyurei-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <a href="index.html">
+                <img src="https://content.app-sources.com/s/02160442932797432/uploads/Images/名称未設定_1000__500_px_1000__400_px_900__300_px_900__350_px-2985679.jpg" alt="頭蓋仙骨療法 ナパチョ">
+            </a>
+        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="napacho_services.html" class="active">施術メニュー</a>
+            <a href="napacho_pricing.html">料金</a>
+            <a href="napacho_about.html">ナパチョについて</a>
+            <a href="napacho_contact.html">アクセス・お問い合わせ</a>
+            <a href="https://lin.ee/djR3d6y" class="btn-line">LINEでお問い合わせ・予約</a>
+        </nav>
+    </div>
+</header>
+<div class="page-hero">
+    <p class="label">MENU</p>
+    <h1>施術メニュー</h1>
+    <p class="subtitle">個別に相談がある場合はご連絡をお待ちしています</p>
+</div>
+<main>
+    <section class="service-section">
+        <p class="section-label">Craniosacral Therapy</p>
+        <h2 class="section-title">頭蓋仙骨療法</h2>
+        <p class="section-desc">頭蓋仙骨療法を中心に90分間、施術をしていきます。血流や石灰質がどうなっているのか、また体の中に溜まっている感情や過去の情報も同時に読み解いてリリースしていきます。</p>
+        <div class="price-grid">
+            <div class="price-card highlight">
+                <div class="card-label">初回のみ</div>
+                <h3>初診料</h3>
+                <div class="duration">はじめての方</div>
+                <div class="price">6,000<span>円</span></div>
+            </div>
+            <div class="price-card">
+                <div class="card-label">サロン施術</div>
+                <h3>頭蓋仙骨療法</h3>
+                <div class="duration">90分</div>
+                <div class="price">16,000<span>円</span></div>
+            </div>
+            <div class="price-card">
+                <div class="card-label">出張施術</div>
+                <h3>頭蓋仙骨療法（出張先）</h3>
+                <div class="duration">90分〜</div>
+                <div class="price">20,000<span>円〜</span></div>
+            </div>
+            <div class="price-card">
+                <div class="card-label">延長</div>
+                <h3>延長料金</h3>
+                <div class="duration">30分あたり</div>
+                <div class="price">6,000<span>円</span></div>
+            </div>
+        </div>
+    </section>
+    <hr class="divider">
+    <section class="service-section">
+        <p class="section-label">Therapy</p>
+        <h2 class="section-title">救霊療法</h2>
+        <p class="section-desc">対面・オンライン可能です。基本料金は60分あたり。</p>
+        <div style="text-align:center;"><span class="online-badge">オンライン対応可能</span></div>
+        <div class="kyurei-grid">
+            <div class="kyurei-card">
+                <div class="type-badge">タイプ１</div>
+                <h3>過去生、インナーチャイルド、<br>交通事故、過去などの<br>エネルギー解放</h3>
+                <div class="price">18,000<span>円</span></div>
+            </div>
+            <div class="kyurei-card">
+                <div class="type-badge">タイプ２</div>
+                <h3>水子供養</h3>
+                <div class="price">22,000<span>円</span></div>
+            </div>
+            <div class="kyurei-card">
+                <div class="type-badge">タイプ３</div>
+                <h3>成仏供養</h3>
+                <div class="price">22,000<span>円</span></div>
+            </div>
+        </div>
+    </section>
+    <div class="cta-box">
+        <h2>ご予約・お問い合わせ</h2>
+        <p>体と魂と心は三位一体になっている。<br>そのズレや原因にアプローチして、より良い状態になるように、<br>ご自身の自然治癒力を引き出します。</p>
+        <a href="https://lin.ee/djR3d6y" class="cta-btn">LINEで予約する</a>
+    </div>
+</main>
+<footer>
+    <div class="footer-inner">
+        <div>
+            <h4>NAVIGATION</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="napacho_about.html">ナパチョについて</a></li>
+                <li><a href="napacho_services.html">施術メニュー</a></li>
+                <li><a href="napacho_contact.html">予約方法</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>CONTACTS</h4>
+            <p style="font-size:0.9em;">info@napacho.jp</p>
+        </div>
+        <div>
+            <h4>Our Location</h4>
+            <p style="font-size:0.9em;line-height:1.8;">所在地<br>〒515-0055<br>三重県松阪市田村町1132-2</p>
+        </div>
+    </div>
+    <div class="footer-copy">© 2026 血流改善療法 ナパチョ All Rights Reserved</div>
+</footer>
+</body>
+</html>
